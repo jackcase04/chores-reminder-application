@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  //not flatlist
+  FlatList
 } from 'react-native';
 import { useRouter } from 'expo-router';
 
@@ -26,6 +26,10 @@ const Welcome = () => {
         <View style={styles.searchWrapper}>
           <TextInput
             style={styles.searchInput}
+            value=""
+            onChange={() => {}}
+            placeholder="What are you looking for?"
+            placeholderTextColor="gray"
           />
         </View>
       </View>
