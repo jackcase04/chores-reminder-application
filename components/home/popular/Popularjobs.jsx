@@ -11,17 +11,23 @@ import useFetch from '../../../hook/useFetch';
 
 const Popularjobs = () => {
   const router = useRouter();
-  
   const { data, isLoading, error } = useFetch
   ('search', {
     query: 'React developer',
     num_pages: 1
-  })
+  });
+
+  const [selectedJob, setSelectedJob] = useState();
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
 
   return (
     <View style={styles.container}> // div containing the popular jobs
       <View style={styles.header}> // div containing the header of the popular jobs
-        <Text style={styles.headerTitle}>Popularjobs</Text> // text displaying the title of the popular jobs
+        <Text style={styles.headerTitle}>Popular jobs</Text> // text displaying the title of the popular jobs
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show all</Text> // text displaying the button to show all popular jobs
         </TouchableOpacity>
@@ -38,6 +44,8 @@ const Popularjobs = () => {
             renderItem={({item}) => (
               <PopularJobCard
                 item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
               />
             )}
             keyExtractor={item => item?.job_id}
