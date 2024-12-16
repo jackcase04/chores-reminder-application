@@ -5,6 +5,9 @@
       "expo-router"
     ],
     "name": "react_native_jobs_1",
-    "slug": "react_native_jobs_1"
+    "slug": "react_native_jobs_1",
+    "router": {
+      "pages": "./app"
+    }
   }
 }
